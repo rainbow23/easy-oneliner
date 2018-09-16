@@ -4,7 +4,7 @@
 (( $+commands[fzf] )) || return
 
 : ${EASY_ONE_REFFILE:="${0:A:h}/easy-oneliner.txt"}
-: ${EASY_ONE_KEYBIND:="^x^x"}
+: ${EASY_ONE_KEYBIND:="^j^j"}
 : ${EASY_ONE_FZF_OPTS:="--no-sort --tac"}
 
 easy-oneliner() {
