@@ -73,18 +73,29 @@ docker image pull @
 [Docker HubへPushします] docker image push $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) !
 [Dockerイメージのタグ付け] docker image tag @
 : イメージ
+
 [イメージ表示] docker image ls !
-[コンテナ表示: 終了したコンテナ] docker container ls  -a !
+[コンテナ表示: 全てのコンテナ] docker container ls  -a !
+[コンテナ表示: 終了したコンテナ] docker container ls --filter "status=exited" !
 [コンテナ表示: filter] docker container ls --filter "name=@"
 [コンテナ表示: 現在実行中のコンテナ] docker container ls !
 : 表示
+
+[コンテナ削除: 停止している全て] docker container ls --filter "status=exited" | sed '1d' | awk '{print $1}' | xargs docker container rm !
+[コンテナ削除: 1つ選択] docker container rm $(docker container ls --filter "status=exited" | sed '1d' | fzf --exit-0 --ansi +m | awk '{print $1}') !
+: 削除
 [コンテナ停止: 現在実行中のコンテナ] docker container stop $(docker container ls  | fzf | awk '{print $1}') !
 [コンテナ停止: イメージ名に該当するコンテナ] docker container stop $(docker container ls --filter "ancestor=$(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)" -q) !
 : 停止
+
+[コンテナ再起動] docker container restart $(docker container ls -a | sed '1d' | fzf | awk '{print $1}') !
+: 再起動
+
 [コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @9000:8080 $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
 [コンテナ起動: イメージから選択] docker container run @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
 [コンテナ起動] docker container run @
 : 起動
+
 [Docker Hub ログイン -uオプションはID -pオプションはパスワード] docker login -u @ -p
 : docker #################################################################################################################
 git commit -m "@"
