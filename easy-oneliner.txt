@@ -50,3 +50,36 @@
 [demo.gifを作成する] mov2gif -f --rate 13 ~/demo@.mov
 
 # vim:ft=sh
+
+:ssh
+[sakuraサーバ] ssh srainbow !
+
+:awk
+ls -la | awk '{print $@ }'
+
+: vim
+[最近開いたファイルをVimで開く Enter] vim $(mru) !
+vim ~/.easy-oneliner/easy-oneliner.txt !
+
+: shell
+source ~/.zshrc !
+source ~/.bashrc !
+
+: ansible
+ansible-playbook -i @
+
+: docker
+docker container run @
+docker image built -t @
+docker image pull @
+
+: git
+git commit -m "@"
+git branch -r @
+git branch -a @
+git rebase -i HEAD@
+git log !
+git log --oneline !
+git log --stat !
+git log --graph !
+git add -u !
