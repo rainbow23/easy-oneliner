@@ -51,35 +51,42 @@
 
 # vim:ft=sh
 
-:ssh
 [sakuraサーバ] ssh srainbow !
+:ssh #################################################################################################################
 
-:awk
 ls -la | awk '{print $@ }'
+:awk #################################################################################################################
 
-: vim
 [最近開いたファイルをVimで開く Enter] vim $(mru) !
 vim ~/.easy-oneliner/easy-oneliner.txt !
+: vim #################################################################################################################
 
-: shell
 source ~/.zshrc !
 source ~/.bashrc !
+: shell #################################################################################################################
 
-: ansible
 ansible-playbook -i @
+: ansible #################################################################################################################
 
-: docker
 docker image pull @
 [Dockerイメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス] docker image build -t @
-[Docker image表示] docker image ls !
-[コンテナ一覧表示: 現在実行中のコンテナ] docker container ls !
+[Docker HubへPushします] docker image push $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) !
+[Dockerイメージのタグ付け] docker image tag @
+: イメージ
+[イメージ表示] docker image ls !
+[コンテナ表示: 終了したコンテナ] docker container ls  -a !
+[コンテナ表示: filter] docker container ls --filter "name=@"
+[コンテナ表示: 現在実行中のコンテナ] docker container ls !
+: 表示
 [コンテナ停止: 現在実行中のコンテナ] docker container stop $(docker container ls  | fzf | awk '{print $1}') !
 [コンテナ停止: イメージ名に該当するコンテナ] docker container stop $(docker container ls --filter "ancestor=$(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)" -q) !
-[コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+: 停止
+[コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @9000:8080 $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[コンテナ起動: イメージから選択] docker container run @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
 [コンテナ起動] docker container run @
-
-
-: git
+: 起動
+[Docker Hub ログイン -uオプションはID -pオプションはパスワード] docker login -u @ -p
+: docker #################################################################################################################
 git commit -m "@"
 git branch -r @
 git branch -a @
@@ -89,3 +96,4 @@ git log --oneline !
 git log --stat !
 git log --graph !
 git add -u !
+: git #################################################################################################################
