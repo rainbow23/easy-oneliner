@@ -69,14 +69,14 @@ source ~/.bashrc !
 ansible-playbook -i @
 
 : docker
-docker container run @
-docker image build -t @
 docker image pull @
-[作成されたDocker imageを表示する] docker image ls !
-[現在実行中のDockerコンテナの一覧を表示する] docker container ls !
-[現在実行中のDockerコンテナを停止する] docker container stop $(docker container ls  | fzf | awk '{print $1}') !
-[イメージ名に該当するDockerコンテナを停止する] docker container stop $(docker container ls --filter "ancestor=$(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)" -q) !
-[ポートフォワーディング指定でコンテナ起動 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[Dockerイメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス] docker image build -t @
+[Docker image表示] docker image ls !
+[コンテナ一覧表示: 現在実行中のコンテナ] docker container ls !
+[コンテナ停止: 現在実行中のコンテナ] docker container stop $(docker container ls  | fzf | awk '{print $1}') !
+[コンテナ停止: イメージ名に該当するコンテナ] docker container stop $(docker container ls --filter "ancestor=$(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)" -q) !
+[コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[コンテナ起動] docker container run @
 
 
 : git
