@@ -120,4 +120,12 @@ git log --oneline !
 git log --stat !
 git log --graph !
 git add -u !
+git clone @
+[リベースを対話式で実行] git rebase -i HEAD@
+[ローカルブランチが特定のリモートブランチを追跡するように設定 追跡させたいローカルブランチにcheckout済み] git branch --set-upstream-to=origin/@
+[リモートリポジトリの追加] git remote add origin @
+[リモートリポジトリの変更] git remote set-url origin @
+[リモートリポジトリのURL確認] git remote -v !
+[追跡ブランチを指定してプッシュ] git push -u origin @
+
 : git #################################################################################################################
