@@ -112,8 +112,8 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 : docker #################################################################################################################
 
 git commit -m "@"
-git branch -r @
-git branch -a @
+[remote-tracking branches] git branch --remotes !
+[remote-tracking branches and local branchesi] git branch --all !
 git rebase -i HEAD@
 git log !
 git log --oneline !
@@ -121,11 +121,12 @@ git log --stat !
 git log --graph !
 git add -u !
 git clone @
+[プル] git pull !
 [リベースを対話式で実行] git rebase -i HEAD@
 [ローカルブランチが特定のリモートブランチを追跡するように設定 追跡させたいローカルブランチにcheckout済み] git branch --set-upstream-to=origin/@
 [リモートリポジトリの追加] git remote add origin @
 [リモートリポジトリの変更] git remote set-url origin @
 [リモートリポジトリのURL確認] git remote -v !
 [追跡ブランチを指定してプッシュ] git push -u origin @
-
+[プッシュ] git push !
 : git #################################################################################################################
