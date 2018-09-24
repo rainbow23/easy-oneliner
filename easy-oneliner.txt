@@ -111,8 +111,14 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 
 : docker #################################################################################################################
 
+[tmux全体を終了] tmux kill-server !
+[セッションの一覧表示] tmux ls !
+[名前をつけて新規セッション開始] tmux new -s @
+[一つ選択したセッションを削除] tks !
+[セッションを再開 ※-t <対象セッション名>でセッション名の指定も可能] tmux a -t @
 [Select selected tmux session] ts !
-[create new tmux session, or switch to existing one] tm !
+[switch to existing one] tm !
+[create new tmux session] tm @
 : tmux ###################################################################################################################
 
 git commit -m "@"
