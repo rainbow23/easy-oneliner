@@ -111,14 +111,19 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 
 : docker #################################################################################################################
 
+[Select selected tmux session] ts !
+[create new tmux session, or switch to existing one] tm !
+: tmux ###################################################################################################################
+
 git commit -m "@"
 [remote-tracking branches] git branch --remotes !
-[remote-tracking branches and local branchesi] git branch --all !
+[remote-tracking branches and local branches] git branch --all !
 git rebase -i HEAD@
 git log !
 git log --oneline !
 git log --stat !
 git log --graph !
+git diff --staged
 git add -u !
 git clone @
 [プル] git pull !
