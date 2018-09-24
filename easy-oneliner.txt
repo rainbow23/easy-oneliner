@@ -72,7 +72,7 @@
 : ログイン
 
 docker image pull @
-[docker イメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス] docker image build -t @
+[docker イメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス] docker image build -t @ .
 [docker HubへPushします] docker image push $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) !
 [docker イメージのタグ付け] docker image tag @
 : イメージ
