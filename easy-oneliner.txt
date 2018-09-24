@@ -123,7 +123,8 @@ git log !
 git log --oneline !
 git log --stat !
 git log --graph !
-git diff --staged
+git diff --staged !
+git reset --hard !
 git add -u !
 git clone @
 [プル] git pull !
