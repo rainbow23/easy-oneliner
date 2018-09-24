@@ -51,79 +51,79 @@
 
 # vim:ft=sh
 
-[sakuraサーバ] ssh srainbow !
+[ssh sakuraサーバ] ssh srainbow !
 :ssh #################################################################################################################
 
-ls -la | awk '{print $@ }'
+[awk] ls -la | awk '{print $@ }'
 :awk #################################################################################################################
 
-[最近開いたファイルをVimで開く Enter] vim $(mru) !
-vim ~/.easy-oneliner/easy-oneliner.txt !
+[vim 最近開いたファイルをVimで開く Enter] vim $(mru) !
+[vim] vim ~/.easy-oneliner/easy-oneliner.txt !
 : vim #################################################################################################################
 
-source ~/.zshrc !
-source ~/.bashrc !
+[shell] source ~/.zshrc !
+[shell] source ~/.bashrc !
 : shell #################################################################################################################
 
-ansible-playbook -i @
+[ansible]  ansible-playbook -i @
 : ansible #################################################################################################################
 
-[Docker Hub ログイン -uオプションはID -pオプションはパスワード] docker login -u @ -p
+[docker Hub ログイン -uオプションはID -pオプションはパスワード] docker login -u @ -p
 : ログイン
 
 docker image pull @
-[Dockerイメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス] docker image build -t @
-[Docker HubへPushします] docker image push $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) !
-[Dockerイメージのタグ付け] docker image tag @
+[docker イメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス] docker image build -t @
+[docker HubへPushします] docker image push $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) !
+[docker イメージのタグ付け] docker image tag @
 : イメージ
 
-[イメージ削除: 不要なイメージ] docker image prune !
-[コンテナ削除: 停止している全て] docker container ls --filter "status=exited" | sed '1d' | awk '{print $1}' | xargs docker container rm !
-[コンテナ削除: 停止している全て] docker container prune !
-[コンテナ削除: 1つ選択] docker container rm $(docker container ls --filter "status=exited" | sed '1d' | fzf --exit-0 --ansi +m | awk '{print $1}') !
+[docker イメージ削除: 不要なイメージ] docker image prune !
+[docker コンテナ削除: 停止している全て] docker container ls --filter "status=exited" | sed '1d' | awk '{print $1}' | xargs docker container rm !
+[docker コンテナ削除: 停止している全て] docker container prune !
+[docker コンテナ削除: 1つ選択] docker container rm $(docker container ls --filter "status=exited" | sed '1d' | fzf --exit-0 --ansi +m | awk '{print $1}') !
 : 削除
 
-[コンテナ停止: 現在実行中のコンテナ] docker container stop $(docker container ls  | fzf | awk '{print $1}') !
-[コンテナ停止: イメージ名に該当するコンテナ] docker container stop $(docker container ls --filter "ancestor=$(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)" -q) !
+[docker コンテナ停止: 現在実行中のコンテナ] docker container stop $(docker container ls  | fzf | awk '{print $1}') !
+[docker コンテナ停止: イメージ名に該当するコンテナ] docker container stop $(docker container ls --filter "ancestor=$(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)" -q) !
 : 停止
 
-[コンテナ再起動] docker container restart $(docker container ls -a | sed '1d' | fzf | awk '{print $1}') !
+[docker コンテナ再起動] docker container restart $(docker container ls -a | sed '1d' | fzf | awk '{print $1}') !
 : 再起動
 
 docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print $1}') !
 : ログ出力
 
-[実行中コンテナで標準入力操作] docker container exec -it $(docker container ls | sed '1d' | fzf +m | awk '{print $1}') sh !
+[docker 実行中コンテナで標準入力操作] docker container exec -it $(docker container ls | sed '1d' | fzf +m | awk '{print $1}') sh !
 : 操作
 
-[イメージ表示] docker image ls !
-[コンテナ表示: 終了したコンテナ] docker container ls --filter "status=exited" !
-[コンテナ表示: filter] docker container ls --filter "name=@"
-[コンテナ利用状況] docker container stats !
-[コンテナ表示: 全てのコンテナ] docker container ls  -a !
-[コンテナ表示: 現在実行中のコンテナ] docker container ls !
+[docker イメージ表示] docker image ls !
+[docker コンテナ表示: 終了したコンテナ] docker container ls --filter "status=exited" !
+[docker コンテナ表示: filter] docker container ls --filter "name=@"
+[docker コンテナ利用状況] docker container stats !
+[docker コンテナ表示: 全てのコンテナ] docker container ls  -a !
+[docker コンテナ表示: 現在実行中のコンテナ] docker container ls !
 : 表示
 
-[コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @9000:8080 $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
-[コンテナ起動: イメージから選択] docker container run @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
-[コンテナ起動] docker container run @
+[docker コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @9000:8080 $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[docker コンテナ起動: イメージから選択] docker container run @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[docker コンテナ起動] docker container run @
 : 起動
 
 : docker #################################################################################################################
 
-[tmux全体を終了] tmux kill-server !
-[セッションの一覧表示] tmux ls !
-[名前をつけて新規セッション開始] tmux new -s @
-[一つ選択したセッションを削除] tks !
-[セッションを再開 ※-t <対象セッション名>でセッション名の指定も可能] tmux a -t @
-[Select selected tmux session] ts !
-[switch to existing one] tm !
-[create new tmux session] tm @
+[tmux 全体を終了] tmux kill-server !
+[tmux セッションの一覧表示] tmux ls !
+[tmux 名前をつけて新規セッション開始] tmux new -s @
+[tmux 一つ選択したセッションを削除] tks !
+[tmux セッションを再開 ※-t <対象セッション名>でセッション名の指定も可能] tmux a -t @
+[tmux Select session] ts !
+[tmux switch to existing one] tm !
+[tmux create new session] tm @
 : tmux ###################################################################################################################
 
 git commit -m "@"
-[remote-tracking branches] git branch --remotes !
-[remote-tracking branches and local branches] git branch --all !
+[git remote-tracking branches] git branch --remotes !
+[git remote-tracking branches and local branches] git branch --all !
 git rebase -i HEAD@
 git log !
 git log --oneline !
@@ -133,12 +133,12 @@ git diff --staged !
 git reset --hard !
 git add -u !
 git clone @
-[プル] git pull !
-[リベースを対話式で実行] git rebase -i HEAD@
-[ローカルブランチが特定のリモートブランチを追跡するように設定 追跡させたいローカルブランチにcheckout済み] git branch --set-upstream-to=origin/@
-[リモートリポジトリの追加] git remote add origin @
-[リモートリポジトリの変更] git remote set-url origin @
-[リモートリポジトリのURL確認] git remote -v !
-[追跡ブランチを指定してプッシュ] git push -u origin @
-[プッシュ] git push !
+[git プル] git pull !
+[git リベースを対話式で実行] git rebase -i HEAD@
+[git ローカルブランチが特定のリモートブランチを追跡するように設定 追跡させたいローカルブランチにcheckout済み] git branch --set-upstream-to=origin/@
+[git リモートリポジトリの追加] git remote add origin @
+[git リモートリポジトリの変更] git remote set-url origin @
+[git リモートリポジトリのURL確認] git remote -v !
+[git 追跡ブランチを指定してプッシュ] git push -u origin @
+[git プッシュ] git push !
 : git #################################################################################################################
