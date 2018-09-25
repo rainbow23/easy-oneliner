@@ -50,7 +50,11 @@
 [demo.gifを作成する] mov2gif -f --rate 13 ~/demo@.mov
 
 # vim:ft=sh
+[vagrant] vagrant destroy !
+[vagrant] vagrant up !
+:vagrant  #################################################################################################################
 
+[ssh vagrantサーバ] ssh myvagrant !
 [ssh sakuraサーバ] ssh srainbow !
 :ssh #################################################################################################################
 
@@ -136,6 +140,9 @@ git clone @
 [git プル] git pull !
 [git リベースを対話式で実行] git rebase -i HEAD@
 [git ローカルブランチが特定のリモートブランチを追跡するように設定 追跡させたいローカルブランチにcheckout済み] git branch --set-upstream-to=origin/@
+[git ブランチ削除] git branch --delete @
+[git ブランチ作成してチェックアウト] git checkout -b @
+[git 直前のコミット内容を修正する] git commit --amend !
 [git リモートリポジトリの追加] git remote add origin @
 [git リモートリポジトリの変更] git remote set-url origin @
 [git リモートリポジトリのURL確認] git remote -v !
