@@ -63,6 +63,7 @@
 
 [vim 最近開いたファイルをVimで開く Enter] vim $(mru) !
 [vim] vim ~/.easy-oneliner/easy-oneliner.txt !
+[vim] vim ~/dotfiles/_vimrc !
 : vim #################################################################################################################
 
 [shell] source ~/.zshrc !
