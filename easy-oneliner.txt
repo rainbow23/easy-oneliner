@@ -127,6 +127,8 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [tmux create new session] tm @
 : tmux ###################################################################################################################
 
+[git conflictで使用 ファイル名を指定必要] git checkout --theirs @
+[git conflictで使用 ファイル名を指定必要] git checkout --ours @
 [git remote-tracking branches] git branch --remotes !
 [git remote-tracking branches and local branches] git branch --all !
 git rebase -i HEAD@
