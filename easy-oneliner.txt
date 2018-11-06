@@ -56,6 +56,7 @@
 
 [ssh vagrantサーバ] ssh myvagrant !
 [ssh sakuraサーバ] ssh srainbow !
+[ssh raspberryサーバ] ssh pirainbow !
 :ssh #################################################################################################################
 
 [awk] ls -la | awk '{print $@ }'
@@ -77,6 +78,7 @@
 [docker Hub ログイン -uオプションはID -pオプションはパスワード] docker login -u @ -p
 : ログイン
 
+[docker image情報] docker inspect $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) 
 docker image pull @
 [docker イメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス] docker image build -t @ .
 [docker HubへPushします] docker image push $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) !
@@ -112,7 +114,9 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 
 [docker コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @9000:8080 $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
 [docker コンテナ起動: イメージから選択] docker container run @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[docker コンテナ起動: イメージから選択 自動ログイン] docker container run -it @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
 [docker コンテナ起動] docker container run @
+[docker コンテナ起動で自動ログイン] docker container run -it @
 : 起動
 
 : docker #################################################################################################################
@@ -129,6 +133,7 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 
 [git conflictで使用 ファイル名を指定必要] git checkout --theirs @
 [git conflictで使用 ファイル名を指定必要] git checkout --ours @
+[git チェリーピック] git cherry-pick @
 [git remote-tracking branches] git branch --remotes !
 [git remote-tracking branches and local branches] git branch --all !
 git rebase -i HEAD@
