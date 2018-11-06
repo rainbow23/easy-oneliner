@@ -104,7 +104,6 @@ docker image pull @
 docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print $1}') !
 : ログ出力
 
-[docker-compose] docker-compose up @
 [docker 実行中コンテナで標準入力操作] docker container exec -it $(docker container ls | sed '1d' | fzf +m | awk '{print $1}') sh !
 : 操作
 
@@ -122,12 +121,12 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [docker コンテナ起動] docker container run @
 [docker コンテナ起動で自動ログイン] docker container run -it @
 : 起動
-
-[docker composer] docker-compose rm !
-[docker composer] docker-compose stop !
-[docker composer] docker-compose ps !
-[docker composer] docker-compose up @
-[docker composer] docker-compose build !
+[docker compose] docker-compose rm !
+[docker compose] docker-compose stop !
+[docker compose] docker-compose ps !
+[docker compose] docker-compose up @
+[docker compose] docker-compose build !
+[docker-compose container起動 docker-compose.ymlのservices名を指定  例:docker-compose run dotfiles] docker-compose run @
 : docker #################################################################################################################
 
 [tmux 全体を終了] tmux kill-server !
