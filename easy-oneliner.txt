@@ -119,6 +119,11 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [docker コンテナ起動] docker container run @
 : 起動
 
+[docker composer] docker-compose rm !
+[docker composer] docker-compose stop !
+[docker composer] docker-compose ps !
+[docker composer] docker-compose up @
+[docker composer] docker-compose build !
 : docker #################################################################################################################
 
 [tmux 全体を終了] tmux kill-server !
