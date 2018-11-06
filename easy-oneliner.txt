@@ -49,6 +49,9 @@
 [logoを作成する] mov2gif -f --size 1500x500 --rate 13 ~/logo@.mov
 [demo.gifを作成する] mov2gif -f --rate 13 ~/demo@.mov
 
+[プロセスの親子関係] ps afx !
+[shell再起動] exec $SHELL -l !
+
 # vim:ft=sh
 [vagrant] vagrant destroy !
 [vagrant] vagrant up !
@@ -101,6 +104,7 @@ docker image pull @
 docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print $1}') !
 : ログ出力
 
+[docker-compose] docker-compose up @
 [docker 実行中コンテナで標準入力操作] docker container exec -it $(docker container ls | sed '1d' | fzf +m | awk '{print $1}') sh !
 : 操作
 
@@ -119,6 +123,11 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [docker コンテナ起動で自動ログイン] docker container run -it @
 : 起動
 
+[docker composer] docker-compose rm !
+[docker composer] docker-compose stop !
+[docker composer] docker-compose ps !
+[docker composer] docker-compose up @
+[docker composer] docker-compose build !
 : docker #################################################################################################################
 
 [tmux 全体を終了] tmux kill-server !
