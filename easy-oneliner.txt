@@ -57,6 +57,7 @@
 [vagrant] vagrant up !
 :vagrant  #################################################################################################################
 
+[sshkey作成 ssh-keygen -t rsa -b 4096 -C "your_email@example.com"] ssh-keygen -t rsa -b 4096 -C @
 [ssh vagrantサーバ] ssh myvagrant !
 [ssh sakuraサーバ] ssh srainbow !
 [ssh raspberryサーバ] ssh pirainbow !
@@ -138,7 +139,7 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [tmux switch to existing one] tm !
 [tmux create new session] tm @
 : tmux ###################################################################################################################
-
+[githubとアクセス確認] ssh -T git@github.com
 [git conflictで使用 ファイル名を指定必要] git checkout --theirs @
 [git conflictで使用 ファイル名を指定必要] git checkout --ours @
 [git チェリーピック] git cherry-pick @
