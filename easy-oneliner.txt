@@ -144,14 +144,12 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [git チェリーピック] git cherry-pick @
 [git remote-tracking branches] git branch --remotes !
 [git remote-tracking branches and local branches] git branch --all !
-git rebase -i HEAD@
 git log !
 git log --oneline !
 git log --stat !
 git log --graph !
 git diff --staged !
 git reset --hard !
-git add -u !
 git clone @
 [git プル] git pull !
 [git リベースを対話式で実行] git rebase -i HEAD@
@@ -160,9 +158,15 @@ git clone @
 [git ブランチ作成してチェックアウト] git checkout -b @
 [git 直前のコミット内容を修正する] git commit --amend !
 [git リモートリポジトリの追加] git remote add origin @
+[git config --global user.email myname@example.com] git config --global user.email @
+[git config --global user.name "My Name"] git config --global user.name @
+[git 設定] git config --global --list
+[git 設定] git config --local --list
+[git branch --move <古いブランチ名> <新しいブランチ名>] git branch --move @
 [git リモートリポジトリの変更] git remote set-url origin @
 [git リモートリポジトリのURL確認] git remote -v !
 [git 追跡ブランチを指定してプッシュ] git push -u origin @
 [git プッシュ] git push !
+git add -u !
 git commit -m "@"
 : git #################################################################################################################
