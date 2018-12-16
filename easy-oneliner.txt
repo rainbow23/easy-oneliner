@@ -144,6 +144,7 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [git conflictで使用 ファイル名を指定必要] git checkout --theirs @
 [git conflictで使用 ファイル名を指定必要] git checkout --ours @
 [git ローカルブランチが特定のリモートブランチを追跡するように設定 追跡させたいローカルブランチにcheckout済み] git branch --set-upstream-to=origin/@
+[git remoteに存在せず、localに存在するブランチを削除] git fetch --all --prune !
 [git ブランチ削除] git branch --delete @
 [git config --global user.email myname@example.com] git config --global user.email @
 [git config --global user.name "My Name"] git config --global user.name @
