@@ -147,9 +147,9 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [git ブランチ削除] git branch --delete @
 [git config --global user.email myname@example.com] git config --global user.email @
 [git config --global user.name "My Name"] git config --global user.name @
-[git setting] git config --list
-[git 設定] git config --global --list
-[git 設定] git config --local --list
+[git setting] git config --list !
+[git 設定] git config --global --list !
+[git 設定] git config --local --list !
 [git branch --move <古いブランチ名> <新しいブランチ名>] git branch --move @
 [git リモートリポジトリの変更] git remote set-url origin @
 [git リモートリポジトリのURL確認] git remote -v !
