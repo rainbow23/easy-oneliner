@@ -173,6 +173,7 @@ git log --stat !
 git log --graph !
 git log --oneline !
 git reset --hard !
+git reset --mixed !
 git diff --staged !
 git add -u !
 git commit -m "@"
