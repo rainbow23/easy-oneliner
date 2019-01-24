@@ -159,6 +159,7 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [git リモートリポジトリの追加] git remote add origin @
 [git 追跡ブランチを指定してプッシュ] git push -u origin @
 [git ローカルrefとリモートrefを比較しローカルが最新なら強制push] git push --force-with-lease
+[git ローカルをリモートにプッシュする] git push --set-upstream origin @
 [git ブランチ作成してチェックアウト] git checkout -b @
 [git チェリーピック] git cherry-pick @
 [git remote-tracking branches] git branch --remotes !
