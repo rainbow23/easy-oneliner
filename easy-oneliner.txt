@@ -51,7 +51,7 @@
 
 [プロセスの親子関係] ps afx !
 [shell再起動] exec $SHELL -l !
-
+[size フォルダサイズを表示 フォルダを指定する 例(現在のディレクトを指定):sudo du -h --max-depth=1 ./] sudo du -h --max-depth=1 @
 # vim:ft=sh
 [vagrant] vagrant destroy !
 [vagrant] vagrant up !
