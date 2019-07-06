@@ -181,6 +181,7 @@ git reset --mixed !
 git diff --staged !
 git add -u !
 git commit -m "@"
+[git worktree add フォルダ名 ブランチ名] git worktree add @
 : git #################################################################################################################
 
 [vim 最近開いたファイルをVimで開く Enter] vim $(mru) !
