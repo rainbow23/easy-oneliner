@@ -144,7 +144,7 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 
 [mysql login file] mysql --defaults-extra-file=@
 : mysql ###################################################################################################################
-
+[git commitする前のblobを検索] git fsck --cache --unreachable $(git for-each-ref --format="%(objectname)")
 [githubとアクセス確認] ssh -T git@github.com
 [git conflictで使用 ファイル名を指定必要] git checkout --theirs @
 [git conflictで使用 ファイル名を指定必要] git checkout --ours @
