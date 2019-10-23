@@ -176,6 +176,7 @@ git log !
 git log --stat !
 git log --graph !
 git log --oneline !
+git stash save "@"
 git reset --hard !
 git reset --mixed !
 git diff --staged !
