@@ -157,6 +157,7 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [git 設定] git config --global --list !
 [git 設定] git config --local --list !
 [git branch --move <古いブランチ名> <新しいブランチ名>] git branch --move @
+[git タグにチェックアウト] git checkout -b @ refs/tags/{version}
 [git リモートリポジトリの変更] git remote set-url origin @
 [git リモートリポジトリのURL確認] git remote -v !
 [git リモートリポジトリの追加] git remote add origin @
