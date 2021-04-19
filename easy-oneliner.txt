@@ -81,48 +81,48 @@
 [ansible]  ansible-playbook -i @
 : ansible #################################################################################################################
 
-[docker Hub ログイン -uオプションはID -pオプションはパスワード] docker login -u @ -p
+[docker Hub ログイン -uオプションはID -pオプションはパスワード              ]  docker login -u @ -p
 : ログイン
 
-[docker image情報] docker inspect $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) 
+[docker image情報                                                           ]  docker inspect $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
 docker image pull @
-[docker イメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス] docker image build -t @ .
-[docker HubへPushします] docker image push $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) !
-[docker イメージのタグ付け] docker image tag @
+[docker イメージビルド: -tオプション {イメージ名:タグ名} Dockerfile配置パス ]  docker image build -t @ .
+[docker HubへPushします                                                     ]  docker image push $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf) !
+[docker イメージのタグ付け                                                  ]  docker image tag @
 : イメージ
 
-[docker イメージ削除: 不要なイメージ] docker image prune !
-[docker コンテナ削除: 停止している全て] docker container ls --filter "status=exited" | sed '1d' | awk '{print $1}' | xargs docker container rm !
-[docker コンテナ削除: 停止している全て] docker container prune !
-[docker コンテナ削除: 1つ選択] docker container rm $(docker container ls --filter "status=exited" | sed '1d' | fzf --exit-0 --ansi +m | awk '{print $1}') !
+[docker イメージ削除: 不要なイメージ                                        ]  docker image prune !
+[docker コンテナ削除: 停止している全て                                      ]  docker container ls --filter "status=exited" | sed '1d' | awk '{print $1}' | xargs docker container rm !
+[docker コンテナ削除: 停止している全て                                      ]  docker container prune !
+[docker コンテナ削除: 1つ選択                                               ]  docker container rm $(docker container ls --filter "status=exited" | sed '1d' | fzf --exit-0 --ansi +m | awk '{print $1}') !
 : 削除
 
-[docker コンテナ停止: 現在実行中のコンテナ] docker container stop $(docker container ls  | fzf | awk '{print $1}') !
-[docker コンテナ停止: イメージ名に該当するコンテナ] docker container stop $(docker container ls --filter "ancestor=$(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)" -q) !
+[docker コンテナ停止: 現在実行中のコンテナ                                  ]  docker container stop $(docker container ls  | fzf | awk '{print $1}') !
+[docker コンテナ停止: イメージ名に該当するコンテナ                          ]  docker container stop $(docker container ls --filter "ancestor=$(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)" -q) !
 : 停止
 
-[docker コンテナ再起動] docker container restart $(docker container ls -a | sed '1d' | fzf | awk '{print $1}') !
+[docker コンテナ再起動                                                      ]  docker container restart $(docker container ls -a | sed '1d' | fzf | awk '{print $1}') !
 : 再起動
 
 docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print $1}') !
 : ログ出力
 
-[docker 実行中コンテナで標準入力操作] docker container exec -it $(docker container ls | sed '1d' | fzf +m | awk '{print $1}') sh !
+[docker 実行中コンテナで標準入力操作                                        ]  docker container exec -it $(docker container ls | sed '1d' | fzf +m | awk '{print $1}') sh !
 : 操作
 
-[docker イメージ表示] docker image ls !
-[docker コンテナ表示: 終了したコンテナ] docker container ls --filter "status=exited" !
-[docker コンテナ表示: filter] docker container ls --filter "name=@"
-[docker コンテナ利用状況] docker container stats !
-[docker コンテナ表示: 全てのコンテナ] docker container ls  -a !
-[docker コンテナ表示: 現在実行中のコンテナ] docker container ls !
+[docker イメージ表示                       ]  docker image ls !
+[docker コンテナ表示: 終了したコンテナ     ]  docker container ls --filter "status=exited" !
+[docker コンテナ表示: filter               ]  docker container ls --filter "name=@"
+[docker コンテナ利用状況                   ]  docker container stats !
+[docker コンテナ表示: 全てのコンテナ       ]  docker container ls  -a !
+[docker コンテナ表示: 現在実行中のコンテナ ]  docker container ls !
 : 表示
 
-[docker コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport}] docker container run -d -p @9000:8080 $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
-[docker コンテナ起動: イメージから選択] docker container run @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
-[docker コンテナ起動: イメージから選択 自動ログイン] docker container run -it @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
-[docker コンテナ起動] docker container run @
-[docker コンテナ起動で自動ログイン] docker container run -it @
+[docker コンテナ起動: ポートフォワーディング指定 -pオプションは {ホスト側port}:{コンテナport} ]  docker container run -d -p @9000:8080 $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[docker コンテナ起動: イメージから選択                                                        ]  docker container run @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[docker コンテナ起動: イメージから選択 自動ログイン                                           ]  docker container run -it @ $(docker image ls | awk '{print $1":"$2}' | sed '1d' | fzf)
+[docker コンテナ起動                                                                          ]  docker container run @
+[docker コンテナ起動で自動ログイン                                                            ]  docker container run -it @
 : 起動
 [docker compose] docker-compose rm !
 [docker compose] docker-compose stop !
@@ -142,36 +142,40 @@ docker container logs $(docker container ls -a | sed '1d' | fzf +m | awk '{print
 [tmux create new session] tm @
 : tmux ###################################################################################################################
 
+[heroku postgresql] heroku pg:psql postgresql-curved-07165 --app historykeeper
+: heroku ###################################################################################################################
+
 [mysql login file] mysql --defaults-extra-file=@
 : mysql ###################################################################################################################
-[git commitする前のblobを検索] git fsck --cache --unreachable $(git for-each-ref --format="%(objectname)")
+[git ローカルブランチが特定のリモートブランチを追跡するように設定 追跡させたいローカルブランチにcheckout済み ] git branch --set-upstream-to=origin/@
 [githubとアクセス確認] ssh -T git@github.com
-[git conflictで使用 ファイル名を指定必要] git checkout --theirs @
-[git conflictで使用 ファイル名を指定必要] git checkout --ours @
-[git ローカルブランチが特定のリモートブランチを追跡するように設定 追跡させたいローカルブランチにcheckout済み] git branch --set-upstream-to=origin/@
-[git remoteに存在せず、localに存在するブランチを削除] git fetch --all --prune !
-[git ブランチ削除] git branch --delete @
-[git config --global user.email myname@example.com] git config --global user.email @
-[git config --global user.name "My Name"] git config --global user.name @
-[git setting] git config --list !
-[git 設定] git config --global --list !
-[git 設定] git config --local --list !
-[git branch --move <古いブランチ名> <新しいブランチ名>] git branch --move @
-[git タグにチェックアウト] git checkout -b @ refs/tags/{version}
-[git リモートリポジトリの変更] git remote set-url origin @
-[git リモートリポジトリのURL確認] git remote -v !
-[git リモートリポジトリの追加] git remote add origin @
-[git 追跡ブランチを指定してプッシュ] git push -u origin @
-[git ローカルrefとリモートrefを比較しローカルが最新なら強制push] git push --force-with-lease
-[git ローカルをリモートにプッシュする] git push --set-upstream origin @
-[git ブランチ作成してチェックアウト] git checkout -b @
-[git チェリーピック] git cherry-pick @
-[git remote-tracking branches] git branch --remotes !
-[git remote-tracking branches and local branches] git branch --all !
-[git 直前のコミット内容を修正する] git commit --amend !
-[git リベースを対話式で実行] git rebase -i HEAD@
-[git プッシュ] git push !
-[git プル] git pull !
+[git commitする前のblobを検索                                   ] git fsck --cache --unreachable $(git for-each-ref --format="%(objectname)")
+[git conflictで使用 ファイル名を指定必要                        ] git checkout --theirs @
+[git conflictで使用 ファイル名を指定必要                        ] git checkout --ours @
+[git remoteに存在せず、localに存在するブランチを削除            ] git fetch --all --prune !
+[git ブランチ削除                                               ] git branch --delete @
+[git config --global user.email myname@example.com              ] git config --global user.email @
+[git config --global user.name "My Name"                        ] git config --global user.name @
+[git setting                                                    ] git config --list !
+[git 設定                                                       ] git config --global --list !
+[git 設定                                                       ] git config --local --list !
+[git branch --move <古いブランチ名> <新しいブランチ名>          ] git branch --move @
+[git タグにチェックアウト                                       ] git checkout -b @ refs/tags/{version}
+[git リモートリポジトリの変更                                   ] git remote set-url origin @
+[git リモートリポジトリのURL確認                                ] git remote -v !
+[git リモートリポジトリの追加                                   ] git remote add origin @
+[git 追跡ブランチを指定してプッシュ                             ] git push -u origin @
+[git ローカルrefとリモートrefを比較しローカルが最新なら強制push ] git push --force-with-lease
+[git ローカルをリモートにプッシュする                           ] git push --set-upstream origin @
+[git ブランチ作成してチェックアウト                             ] git checkout -b @
+[git チェリーピック                                             ] git cherry-pick @
+[git remote-tracking branches                                   ] git branch --remotes !
+[git remote-tracking branches and local branches                ] git branch --all !
+[git 直前のコミット内容を修正する                               ] git commit --amend !
+[git リベースを対話式で実行                                     ] git rebase -i HEAD@
+[git プッシュ                                                   ] git push !
+[git プル                                                       ] git pull !
+[git 直前のコミットをなかったことにする                         ] git reset --soft HEAD^
 git clone @
 git log !
 git log --stat !
@@ -185,6 +189,9 @@ git add -u !
 git commit -m "@"
 [git worktree add フォルダ名 ブランチ名] git worktree add @
 : git #################################################################################################################
+
+[aws cli設定 ファイル作成場所  ~/.aws/credentials] aws configure
+: aws #################################################################################################################
 
 [vim 最近開いたファイルをVimで開く Enter] vim $(mru) !
 [vim] vim ~/dotfiles/_vimrc !
